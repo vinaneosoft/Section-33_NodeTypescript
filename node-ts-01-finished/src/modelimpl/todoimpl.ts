@@ -28,11 +28,7 @@ export function updateTodo(id:string, todo:Todo){
 
 
 export function getTodoById(id:string){
-    return todos.findIndex((todo:Todo)=>{
-        console.log(todo.id);
-        console.log(id);
-        return todo.id==id
-})
+    return todos.findIndex((todo:Todo)=>todo.id==id)
 }
 export function deleteTodo(id:string){
     const foundIndex=getTodoById(id);
