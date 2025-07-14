@@ -22,6 +22,8 @@ function add(num1: NumOrString, num2: NumOrString) {
   return +num1 + +num2;
 }
 
+
+
 function printResult(resultObj: ResultObj) {
   console.log(resultObj.val);
 }
@@ -44,5 +46,5 @@ const myPromise = new Promise<string>((resolve, reject) => {
 });
 
 myPromise.then((result) => {
-  console.log(result.split('w'));
+  console.log(result);
 });
