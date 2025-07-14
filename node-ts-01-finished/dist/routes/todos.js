@@ -1,22 +1,15 @@
-import { Router } from 'express';
-
-
-import todocontroller from '../controllers/todocontroller'
-
-
-type RequestBody = { text: string };
-type RequestParams = { todoId: string };
-
-const router = Router();
-
-router.get('/', todocontroller.getAllTodosMiddleware);
-router.post('/todo', todocontroller.createTodoMiddleware);
-router.put('/todo/:todoId', todocontroller.updateTodoMiddleware);
-router.delete('/todo/:todoId', todocontroller.deleteTodoMiddleware)
-
-
-
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const todocontroller_1 = __importDefault(require("../controllers/todocontroller"));
+const router = (0, express_1.Router)();
+router.get('/', todocontroller_1.default.getAllTodosMiddleware);
+router.post('/todo', todocontroller_1.default.createTodoMiddleware);
+router.put('/todo/:todoId', todocontroller_1.default.updateTodoMiddleware);
+router.delete('/todo/:todoId', todocontroller_1.default.deleteTodoMiddleware);
 /* router.get('/', (req, res, next) => {
   res.status(200).json({ todos: todos });
 });
@@ -51,4 +44,4 @@ router.delete('/todo/:todoId', (req, res, next) => {
   res.status(200).json({ message: 'Deleted todo', todos: todos });
 });
  */
-export default router;
+exports.default = router;

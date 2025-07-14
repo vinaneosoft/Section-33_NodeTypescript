@@ -38,9 +38,9 @@ export function deleteTodo(id:string){
 }
 
 export default {
-    createTodo:createTodo,
-    getAllTodos:getAllTodos,
-    updateTodo:updateTodo,
-    getTodoById:getTodoById,
-    deleteTodo:deleteTodo
+   createTodo,
+    getAllTodos,
+    updateTodo,
+    getTodoById,
+    deleteTodo
 }
