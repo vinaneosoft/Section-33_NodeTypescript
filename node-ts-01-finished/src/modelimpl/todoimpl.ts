@@ -19,6 +19,7 @@ export function getAllTodos(){
 
 export function updateTodo(id:string, todo:Todo){
     const foundIndex=getTodoById(id);
+    console.log(foundIndex);
     if(foundIndex<0)
         return false;
     todos[foundIndex]= todo;  // exsiting id, and updated text
@@ -27,7 +28,11 @@ export function updateTodo(id:string, todo:Todo){
 
 
 export function getTodoById(id:string){
-    return todos.findIndex((todo:Todo)=>todo.id==id)
+    return todos.findIndex((todo:Todo)=>{
+        console.log(todo.id);
+        console.log(id);
+        return todo.id==id
+})
 }
 export function deleteTodo(id:string){
     const foundIndex=getTodoById(id);

@@ -19,13 +19,18 @@ function getAllTodos() {
 }
 function updateTodo(id, todo) {
     const foundIndex = getTodoById(id);
+    console.log(foundIndex);
     if (foundIndex < 0)
         return false;
     todos[foundIndex] = todo; // exsiting id, and updated text
     return true;
 }
 function getTodoById(id) {
-    return todos.findIndex((todo) => todo.id == id);
+    return todos.findIndex((todo) => {
+        console.log(todo.id);
+        console.log(id);
+        return todo.id == id;
+    });
 }
 function deleteTodo(id) {
     const foundIndex = getTodoById(id);

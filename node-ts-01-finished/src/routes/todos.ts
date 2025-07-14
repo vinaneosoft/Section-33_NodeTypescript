@@ -11,8 +11,8 @@ const router = Router();
 
 router.get('/', todocontroller.getAllTodosMiddleware);
 router.post('/todo', todocontroller.createTodoMiddleware);
-router.put('/todo/:todoId', todocontroller.updateTodoMiddleware);
-router.delete('/todo/:todoId', todocontroller.deleteTodoMiddleware)
+router.put('/todo/:id', todocontroller.updateTodoMiddleware);
+router.delete('/todo/:id', todocontroller.deleteTodoMiddleware)
 
 
 

@@ -8,7 +8,7 @@ const todoimpl_1 = __importDefault(require("../modelimpl/todoimpl"));
 const createTodoMiddleware = (req, res, next) => {
     let todo = Object.assign(Object.assign({}, req.body), { id: new Date().toISOString() });
     const b = todoimpl_1.default.createTodo(todo);
-    res.status(200).send(b);
+    res.status(201).send(b);
 };
 exports.createTodoMiddleware = createTodoMiddleware;
 const getAllTodosMiddleware = (req, res, next) => {
@@ -17,6 +17,10 @@ const getAllTodosMiddleware = (req, res, next) => {
 };
 exports.getAllTodosMiddleware = getAllTodosMiddleware;
 const updateTodoMiddleware = (req, res, next) => {
+    const id = req.params.id;
+    const updatedtodo = req.body;
+    const b = todoimpl_1.default.updateTodo(id, updatedtodo);
+    res.status(201).send(b);
 };
 exports.updateTodoMiddleware = updateTodoMiddleware;
 const getTodoByIdMiddleware = (req, res, next) => {

@@ -17,7 +17,7 @@ export const getAllTodosMiddleware=(req:any,res:any,next:any)=>{
 
 
 export const updateTodoMiddleware=(req:any,res:any,next:any)=>{
- const id=req.params.id;
+    const id=req.params.id;
     const updatedtodo=req.body as Todo;
     const b=todoimpl.updateTodo(id,updatedtodo);
     res.status(201).send(b)
