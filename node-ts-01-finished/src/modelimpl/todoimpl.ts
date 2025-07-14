@@ -1,7 +1,7 @@
 
 // CRUD
 
-import { Todo } from "../src/models/todo";
+import { Todo } from "../models/todo";
 
 let todos: Todo[] = [];
 
@@ -36,7 +36,6 @@ export function deleteTodo(id:string){
     todos.splice(foundIndex,1)
     return true;
 }
-
 
 export default {
     createTodo:createTodo,

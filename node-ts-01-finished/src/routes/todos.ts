@@ -1,6 +1,8 @@
 import { Router } from 'express';
 
-import { Todo } from '../models/todo';
+
+import todocontroller from '../controllers/todocontroller'
+
 
 type RequestBody = { text: string };
 type RequestParams = { todoId: string };
@@ -8,6 +10,14 @@ type RequestParams = { todoId: string };
 let todos: Todo[] = [];
 
 const router = Router();
+
+router.get('/', todocontroller.getAllTodosMiddleware);
+router.post('/todo', todocontroller.createTodoMiddleware);
+router.put('/todo/:todoId', todocontroller.updateTodoMiddleware);
+router.delete('/todo/:todoId', todocontroller.deleteTodoMiddleware)
+
+
+
 
 router.get('/', (req, res, next) => {
   res.status(200).json({ todos: todos });
