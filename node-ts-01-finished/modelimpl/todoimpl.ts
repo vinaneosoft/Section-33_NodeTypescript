@@ -5,7 +5,7 @@ import { Todo } from "../src/models/todo";
 
 let todos: Todo[] = [];
 
-function createTodo(todo:Todo){
+export function createTodo(todo:Todo){
     const oldLength=todos.length;
     todos.push(todo);
     if(todos.length>oldLength)
@@ -13,11 +13,11 @@ function createTodo(todo:Todo){
     return false;
 }
 
-function getAllTodos(){
+export function getAllTodos(){
     return todos;
 }
 
-function updateTodo(id:string, todo:Todo){
+export function updateTodo(id:string, todo:Todo){
     const foundIndex=getTodoById(id);
     if(foundIndex<0)
         return false;
@@ -26,10 +26,10 @@ function updateTodo(id:string, todo:Todo){
 }
 
 
-function getTodoById(id:string){
+export function getTodoById(id:string){
     return todos.findIndex((todo:Todo)=>todo.id==id)
 }
-function deleteTodo(id:string){
+export function deleteTodo(id:string){
     const foundIndex=getTodoById(id);
     if(foundIndex<0)
         return false;
@@ -37,3 +37,11 @@ function deleteTodo(id:string){
     return true;
 }
 
+
+export default {
+    createTodo:createTodo,
+    getAllTodos:getAllTodos,
+    updateTodo:updateTodo,
+    getTodoById:getTodoById,
+    deleteTodo:deleteTodo
+}
