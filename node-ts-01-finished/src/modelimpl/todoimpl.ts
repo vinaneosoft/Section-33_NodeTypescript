@@ -8,7 +8,7 @@ let todos: Todo[] = [];
 export function createTodo(todo:Todo){
     const oldLength=todos.length;
     todos.push(todo);
-    if(todos.length>oldLength)
+    if(todos.length>oldLength)    // use mongoose built in function
         return true;
     return false;
 }
