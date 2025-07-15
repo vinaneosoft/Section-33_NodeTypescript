@@ -11,6 +11,7 @@ app.all(
       schema:userschema
     })
   );
+app.use(express.urlencoded({ extended: true }));
 app.get("/", (_req, res) => {
     res.type("html")
     res.end(ruruHTML({ endpoint: "/graphql" }))

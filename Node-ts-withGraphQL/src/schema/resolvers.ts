@@ -1,11 +1,17 @@
-
+import { Todo } from "../models/todo";
+import todoimpl from '../modelimpl/todoimpl';
 export const resolvers ={
    Query:{
       fetchTodos :  () =>{
+          const todos= todoimpl.getAllTodos();
+         console.log(todos);
+         return todos;
         /*  const res= await getAllUsers();
          return res; */
       },
       getTodo : (parent:any, args:any, context:any)=>{
+        
+         
         /*  const res=await getUserById(args._id);
          if(res==null)
                throw new UserNotFoundException(`User with id ${args._id} Not Found`)
@@ -14,6 +20,11 @@ export const resolvers ={
    },
     Mutation:{
       addTodo : (parent:any, args:any, context:any)=>{
+         //console.log(args.todo);
+         const data=args.todo as Todo;
+          let todo= {...data, id:new Date().toISOString()} as Todo;
+         console.log(todo);
+         return todoimpl.createTodo(todo);
         /*  console.log(args);
          const res=await addUser(args.user);
          return res; */

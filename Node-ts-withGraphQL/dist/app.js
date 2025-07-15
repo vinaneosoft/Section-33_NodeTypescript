@@ -13,6 +13,7 @@ const app = (0, express_1.default)();
 app.all("/graphql", (0, express_2.createHandler)({
     schema: Index_1.userschema
 }));
+app.use(express_1.default.urlencoded({ extended: true }));
 app.get("/", (_req, res) => {
     res.type("html");
     res.end(ruruHTML({ endpoint: "/graphql" }));

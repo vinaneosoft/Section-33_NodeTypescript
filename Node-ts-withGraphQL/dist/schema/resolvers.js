@@ -8,11 +8,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.resolvers = void 0;
+const todoimpl_1 = __importDefault(require("../modelimpl/todoimpl"));
 exports.resolvers = {
     Query: {
         fetchTodos: () => {
+            const todos = todoimpl_1.default.getAllTodos();
+            console.log(todos);
+            return todos;
             /*  const res= await getAllUsers();
              return res; */
         },
@@ -25,6 +32,11 @@ exports.resolvers = {
     },
     Mutation: {
         addTodo: (parent, args, context) => {
+            //console.log(args.todo);
+            const data = args.todo;
+            let todo = Object.assign(Object.assign({}, data), { id: new Date().toISOString() });
+            console.log(todo);
+            return todoimpl_1.default.createTodo(todo);
             /*  console.log(args);
              const res=await addUser(args.user);
              return res; */
