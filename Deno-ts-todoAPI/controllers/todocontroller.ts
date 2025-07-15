@@ -23,23 +23,22 @@ export const updateTodoMiddleware = async (ctx: Context) => {
     const updatedtodo = todoimpl.updateTodo(id, todo);
     ctx.response.body = updatedtodo
 }
-/* 
-export const getTodoByIdMiddleware=(req:Request,res:Response,next:NextFunction)=>{
-    const foundtodo=todoimpl.getTodoById(req.params.id);
-    res.send(foundtodo);
+
+export const getTodoByIdMiddleware= async (ctx: Context) => {
+    const foundtodo=todoimpl.getTodoById(ctx.params.id);
+     ctx.response.body=foundtodo;
 }
 
-export const deleteTodoMiddleware=(req:Request,res:Response,next:NextFunction)=>{
-    const deletedtodo=todoimpl.deleteTodo(req.params.id);
-    res.send(deletedtodo);
+export const deleteTodoMiddleware=async (ctx: Context) => {
+    const deletedtodo=todoimpl.deleteTodo(ctx.params.id);
+    ctx.response.body=deletedtodo;
 }
- */
 
 export default
     {
         createTodoMiddleware,
-        getAllTodosMiddleware
-        /*updateTodoMiddleware,
+        getAllTodosMiddleware,
+        updateTodoMiddleware,
        getTodoByIdMiddleware,
-       deleteTodoMiddleware */
+       deleteTodoMiddleware 
     }
