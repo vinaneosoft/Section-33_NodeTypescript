@@ -3,23 +3,22 @@ import todoimpl from "../modelimpl/todoimpl.ts"
 
 import {Todo} from '../models/todo.ts';
 
-export const createTodoMiddleware=async (ctx)=>{
-    console.log("create todo middleware....");
-    
-    let data=await ctx.request.body()
+export const createTodoMiddleware=async (ctx)=>{ 
+    const body = ctx.request.body(); 
+    const data = await body.value; // await the parsed value
+    console.log("Received data:", data);
     let todo= {...data, id:new Date().toISOString()} as Todo;
     const createdtodo=todoimpl.createTodo(todo);
     ctx.response.body=createdtodo
-  //  ctx.response.body = { message: 'Created todo!', todo: newTodo };
+}
+
+
+export const getAllTodosMiddleware=async (ctx)=>{
+    const todos=todoimpl.getAllTodos();
+    ctx.response.body=todos
 }
 
 /* 
-export const getAllTodosMiddleware=(req:Request,res:Response,next:NextFunction)=>{
-    const todos=todoimpl.getAllTodos();
-    res.status(200).send(todos)
-}
-
-
 export const updateTodoMiddleware=(req:Request,res:Response,next:NextFunction)=>{
     const id=req.params.id;
     const todo=req.body as Todo;
@@ -40,9 +39,9 @@ export const deleteTodoMiddleware=(req:Request,res:Response,next:NextFunction)=>
 
 export default 
 {
-    createTodoMiddleware
-  /*   getAllTodosMiddleware, 
-    updateTodoMiddleware,
+    createTodoMiddleware,
+    getAllTodosMiddleware
+     /*updateTodoMiddleware,
     getTodoByIdMiddleware,
     deleteTodoMiddleware */
 }
