@@ -10,7 +10,7 @@ let todos = [];
 function createTodo(todo) {
     const oldLength = todos.length;
     todos.push(todo);
-    if (todos.length > oldLength)
+    if (todos.length > oldLength) // use mongoose built in function
         return true;
     return false;
 }
@@ -26,11 +26,7 @@ function updateTodo(id, todo) {
     return true;
 }
 function getTodoById(id) {
-    return todos.findIndex((todo) => {
-        console.log(todo.id);
-        console.log(id);
-        return todo.id == id;
-    });
+    return todos.findIndex((todo) => todo.id == id);
 }
 function deleteTodo(id) {
     const foundIndex = getTodoById(id);

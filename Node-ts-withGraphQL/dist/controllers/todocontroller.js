@@ -7,8 +7,8 @@ exports.deleteTodoMiddleware = exports.getTodoByIdMiddleware = exports.updateTod
 const todoimpl_1 = __importDefault(require("../modelimpl/todoimpl"));
 const createTodoMiddleware = (req, res, next) => {
     let todo = Object.assign(Object.assign({}, req.body), { id: new Date().toISOString() });
-    const b = todoimpl_1.default.createTodo(todo);
-    res.status(201).send(b);
+    const createdtodo = todoimpl_1.default.createTodo(todo);
+    res.status(201).send(createdtodo);
 };
 exports.createTodoMiddleware = createTodoMiddleware;
 const getAllTodosMiddleware = (req, res, next) => {
@@ -18,15 +18,19 @@ const getAllTodosMiddleware = (req, res, next) => {
 exports.getAllTodosMiddleware = getAllTodosMiddleware;
 const updateTodoMiddleware = (req, res, next) => {
     const id = req.params.id;
-    const updatedtodo = req.body;
-    const b = todoimpl_1.default.updateTodo(id, updatedtodo);
-    res.status(201).send(b);
+    const todo = req.body;
+    const updatedtodo = todoimpl_1.default.updateTodo(id, todo);
+    res.send(updatedtodo);
 };
 exports.updateTodoMiddleware = updateTodoMiddleware;
 const getTodoByIdMiddleware = (req, res, next) => {
+    const foundtodo = todoimpl_1.default.getTodoById(req.params.id);
+    res.send(foundtodo);
 };
 exports.getTodoByIdMiddleware = getTodoByIdMiddleware;
 const deleteTodoMiddleware = (req, res, next) => {
+    const deletedtodo = todoimpl_1.default.deleteTodo(req.params.id);
+    res.send(deletedtodo);
 };
 exports.deleteTodoMiddleware = deleteTodoMiddleware;
 exports.default = {

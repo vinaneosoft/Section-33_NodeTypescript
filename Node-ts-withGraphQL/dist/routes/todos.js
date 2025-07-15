@@ -8,6 +8,7 @@ const todocontroller_1 = __importDefault(require("../controllers/todocontroller"
 const router = (0, express_1.Router)();
 router.get('/', todocontroller_1.default.getAllTodosMiddleware);
 router.post('/todo', todocontroller_1.default.createTodoMiddleware);
+router.get('/todo/:id', todocontroller_1.default.getTodoByIdMiddleware);
 router.put('/todo/:id', todocontroller_1.default.updateTodoMiddleware);
 router.delete('/todo/:id', todocontroller_1.default.deleteTodoMiddleware);
 /* router.get('/', (req, res, next) => {
