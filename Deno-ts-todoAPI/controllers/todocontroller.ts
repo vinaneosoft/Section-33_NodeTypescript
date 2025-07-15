@@ -1,9 +1,11 @@
 
-import todoimpl from "../modelimpl/todoimpl"
+import todoimpl from "../modelimpl/todoimpl.ts"
 
-import {Todo} from '../models/todo';
+import {Todo} from '../models/todo.ts';
 
 export const createTodoMiddleware=async (ctx)=>{
+    console.log("create todo middleware....");
+    
     let data=await ctx.request.body()
     let todo= {...data, id:new Date().toISOString()} as Todo;
     const createdtodo=todoimpl.createTodo(todo);

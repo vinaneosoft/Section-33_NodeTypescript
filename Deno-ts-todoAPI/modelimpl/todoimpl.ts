@@ -1,7 +1,7 @@
 
 // CRUD
 
-import { Todo } from "../models/todo";
+import { Todo } from "../models/todo.ts";
 
 let todos: Todo[] = [];
 
