@@ -1,16 +1,17 @@
-import {Request,Response,NextFunction} from 'express';
 
 import todoimpl from "../modelimpl/todoimpl"
 
 import {Todo} from '../models/todo';
 
-export const createTodoMiddleware=(req:Request,res:Response,next:NextFunction)=>{
-    let todo= {...req.body, id:new Date().toISOString()} as Todo;
+export const createTodoMiddleware=async (ctx)=>{
+    let data=await ctx.request.body()
+    let todo= {...data, id:new Date().toISOString()} as Todo;
     const createdtodo=todoimpl.createTodo(todo);
-    res.status(201).send(createdtodo)
+    ctx.response.body=createdtodo
+  //  ctx.response.body = { message: 'Created todo!', todo: newTodo };
 }
 
-
+/* 
 export const getAllTodosMiddleware=(req:Request,res:Response,next:NextFunction)=>{
     const todos=todoimpl.getAllTodos();
     res.status(200).send(todos)
@@ -33,13 +34,13 @@ export const deleteTodoMiddleware=(req:Request,res:Response,next:NextFunction)=>
     const deletedtodo=todoimpl.deleteTodo(req.params.id);
     res.send(deletedtodo);
 }
-
+ */
 
 export default 
 {
-    createTodoMiddleware,
-    getAllTodosMiddleware, 
+    createTodoMiddleware
+  /*   getAllTodosMiddleware, 
     updateTodoMiddleware,
     getTodoByIdMiddleware,
-    deleteTodoMiddleware
+    deleteTodoMiddleware */
 }
